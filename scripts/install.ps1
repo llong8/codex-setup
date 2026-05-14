@@ -16,8 +16,8 @@ $ErrorActionPreference = 'Stop'
 $ESC = [char]27
 try { $useColor = $Host.UI.SupportsVirtualTerminal } catch { $useColor = $true }
 
-function c { param($code) if ($useColor) { return "$ESC[$code`m" } else { return '' } }
-function tc { param($r, $g, $b) if ($useColor) { return "$ESC[38;2;$r;$g;$b`m" } else { return '' } }
+function c { param($code) if ($useColor) { return "${ESC}[${code}m" } else { return '' } }
+function tc { param($r, $g, $b) if ($useColor) { return "${ESC}[38;2;${r};${g};${b}m" } else { return '' } }
 
 $OFF = c '0';  $DIM = c '2';  $BLD = c '1'
 $RED = c '31'; $GRN = c '32'; $YEL = c '33'
@@ -154,9 +154,10 @@ function Show-Promo {
         "${BLU}▸${OFF}  创作:Veo 3.1 / GPT Image 2 / SD 3.5",
         "${BLU}▸${OFF}  新模型 ${GRN}${BLD}0 时差上线${OFF}",
         "${BLU}▸${OFF}  注册即送 · ${GLD}${BLD}0 门槛试用${OFF}",
+        "${BLU}▸${OFF}  支持 ${GLD}${BLD}10000+${OFF} 并发 · ${BLD}企业级定制${OFF}详询淘宝旗舰店",
         '',
-        # 多 4 空格让两行的 → 箭头垂直对齐
-        "控制台      →  ${CYN}${UND}https://api.intenext.ai${OFF}",
+        # 算力平台 4 字 + 4 sp vs 淘宝旗舰店 5 字 + 2 sp,→ 箭头垂直对齐
+        "算力平台    →  ${CYN}${UND}https://api.intenext.ai${OFF}",
         "淘宝旗舰店  →  ${CYN}${UND}https://item.taobao.com/item.htm?ft=t&id=1046050759606${OFF}",
         ''
     ) -Width 72
@@ -188,10 +189,10 @@ if (-not $ApiKey) {
     Write-Host "  ${CYN}›${OFF}  "
     Write-Host "  ${DIM}${line}${OFF}"
     # 光标上移 2 行 + 右移 5 列(刚好在 "  ›  " 之后)
-    [Console]::Write("$ESC[2A$ESC[5C")
+    [Console]::Write("${ESC}[2A${ESC}[5C")
     $ApiKey = [Console]::ReadLine()
     # 输入完成后下移 1 行,让后续输出落在下线之下
-    [Console]::Write("$ESC[1B")
+    [Console]::Write("${ESC}[1B")
 }
 
 if (-not $ApiKey) {
@@ -202,8 +203,8 @@ if (-not $ApiKey) {
 Write-Host "`n  ${DIM}正在配置 …${OFF}"
 
 # ─── 备份现有配置 ─────────────────────────────────────
-if (Test-Path $configFile) { Copy-Item $configFile "$configFile.bak" -Force }
-if (Test-Path $authFile)   { Copy-Item $authFile   "$authFile.bak"   -Force }
+if (Test-Path $configFile) { Copy-Item $configFile "${configFile}.bak" -Force }
+if (Test-Path $authFile)   { Copy-Item $authFile   "${authFile}.bak"   -Force }
 
 # ─── 写 config.toml:剥离 + 重排,保证顶层 key 真在顶层 ─
 $managedTopKeys = @(

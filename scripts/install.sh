@@ -200,9 +200,10 @@ lines = [
     f'{BLU}▸{OFF}  创作:Veo 3.1 / GPT Image 2 / SD 3.5',
     f'{BLU}▸{OFF}  新模型 {GRN}{BLD}0 时差上线{OFF}',
     f'{BLU}▸{OFF}  注册即送 · {GLD}{BLD}0 门槛试用{OFF}',
+    f'{BLU}▸{OFF}  支持 {GLD}{BLD}10000+{OFF} 并发 · {BLD}企业级定制{OFF}详询淘宝旗舰店',
     '',
-    # 多 4 空格让"控制台"和"淘宝旗舰店"的 → 箭头对齐(中文 2 列对齐补位)
-    f'控制台      →  {CYN}{UND}https://api.intenext.ai{OFF}',
+    # 算力平台 4 字 + 4 sp vs 淘宝旗舰店 5 字 + 2 sp,→ 箭头垂直对齐
+    f'算力平台    →  {CYN}{UND}https://api.intenext.ai{OFF}',
     f'淘宝旗舰店  →  {CYN}{UND}https://item.taobao.com/item.htm?ft=t&id=1046050759606{OFF}',
     '',
 ]

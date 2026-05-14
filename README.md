@@ -44,8 +44,9 @@ iex (irm https://api.intenext.ai/install.ps1)
   │  ▸  创作:Veo 3.1 / GPT Image 2 / SD 3.5                                │
   │  ▸  新模型 0 时差上线                                                  │
   │  ▸  注册即送 · 0 门槛试用                                              │
+  │  ▸  支持 10000+ 并发 · 企业级定制详询淘宝旗舰店                        │
   │                                                                        │
-  │  控制台      →  https://api.intenext.ai                                │
+  │  算力平台    →  https://api.intenext.ai                                │
   │  淘宝旗舰店  →  https://item.taobao.com/item.htm?ft=t&id=1046050759606 │
   │                                                                        │
   └────────────────────────────────────────────────────────────────────────┘
@@ -62,7 +63,7 @@ iex (irm https://api.intenext.ai/install.ps1)
   打开 Codex 即可开始使用。
 ```
 
-实际终端里**两个方框的边框都是蓝紫粉金青真彩色渐变**,品牌名也是渐变字母 —— 头部和底部用同款视觉语言,呼应感拉满。
+实际终端里**方框的边框是蓝紫粉金青真彩色渐变**(每个 ─ 字符自己一个颜色,平滑过渡),品牌名也是渐变字母,关键数字(`1 折价` / `10000+` / `0 时差` / `0 门槛`)按主题色加粗高亮。
 
 3 步走完:**粘命令 → 粘 key → 回车**。整个过程 5 秒。
 
@@ -215,19 +216,22 @@ mv ~/.codex/auth.json.bak   ~/.codex/auth.json
 
 ---
 
-## 部署:把 install.sh 挂到 api.intenext.ai
+## 部署:把脚本挂到 api.intenext.ai
 
-走 Cloudflare Worker,**不依赖任何自建服务器**:
+走 Cloudflare Worker,**不依赖任何自建服务器**,bash + PowerShell 同一个 Worker 服务:
 
 ```bash
 bun run build:worker
-# 把 scripts/cf-worker/dist-worker.js 粘到 CF Worker 编辑器
-# 绑定路由 api.intenext.ai/install
+# scripts/cf-worker/dist-worker.js 已内联 install.sh + install.ps1(~22 KB)
+# 粘到 CF Worker 编辑器 → Deploy
+# 绑两条路由:
+#   api.intenext.ai/install        ← Bash 脚本
+#   api.intenext.ai/install.ps1    ← PowerShell 脚本
 ```
 
 完整步骤见 [`scripts/cf-worker/README.md`](scripts/cf-worker/README.md)。
 
-只拦 `/install` 这一个路径,api.intenext.ai 上其他路径(LLM API)完全不受影响。Worker 免费额度每天 100k 请求,这种安装脚本场景永远用不完。
+只拦 `/install` 和 `/install.ps1` 这两个路径,api.intenext.ai 上其他路径(LLM API)完全不受影响。Worker 免费额度每天 100k 请求,这种安装脚本场景永远用不完。
 
 ---
 
@@ -272,10 +276,11 @@ bun run build:worker
 │   └── codex-config.ts       # 配置写入核心(与 install.sh 等价)
 ├── src/                      # React 渲染进程 UI
 ├── scripts/
-│   ├── install.sh            # 命令行版安装脚本(curl|bash 的本体)
+│   ├── install.sh            # Bash 安装脚本(macOS / Linux,curl|bash 本体)
+│   ├── install.ps1           # PowerShell 安装脚本(Windows)
 │   ├── dist-all.ts           # 一键打包 mac + win
 │   └── cf-worker/            # Cloudflare Worker 部署
-│       ├── build.ts          # 把 install.sh 内联成 Worker JS
+│       ├── build.ts          # 把 install.sh + install.ps1 内联成 Worker JS
 │       └── README.md
 ├── build/                    # 应用图标
 ├── electron-builder.json     # 打包配置
