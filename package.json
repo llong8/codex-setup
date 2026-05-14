@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "dist:mac": "vite build && electron-builder --mac --config electron-builder.json",
     "dist:win": "vite build && electron-builder --win --config electron-builder.json",
-    "dist:all": "bun scripts/dist-all.ts"
+    "dist:all": "bun scripts/dist-all.ts",
+    "build:worker": "bun scripts/cf-worker/build.ts"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
