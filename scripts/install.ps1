@@ -303,8 +303,11 @@ foreach ($name in @('codex', 'Codex')) {
 
 if ($codexRunning) {
     # Windows:Codex 桌面应用关窗口后驻留在系统托盘,必须从托盘退出
-    Write-Host "  ${DIM}Codex 正在运行 — 仅关闭窗口不够,应用驻留在系统托盘。${OFF}"
-    Write-Host "  ${DIM}请到屏幕${BLD}右下角任务栏${OFF}${DIM}(系统托盘)→ 右键 ${BLD}Codex${OFF}${DIM} 图标 → ${BLD}退出${OFF}${DIM},然后重新打开应用。${OFF}`n"
+    Write-Host ""
+    Write-Host "  ${YEL}${BLD}⚠${OFF}  ${YEL}${BLD}Codex 正在运行 — 配置不会自动生效${OFF}"
+    Write-Host "     请到屏幕${GLD}${BLD}右下角任务栏${OFF}(系统托盘)→ 右键 ${GLD}${BLD}Codex${OFF} 图标 → ${GLD}${BLD}退出${OFF}"
+    Write-Host "     再重新打开 Codex 应用"
+    Write-Host "     ${DIM}(关闭窗口不够 — Codex 仍驻留在系统托盘)${OFF}`n"
 } else {
     Write-Host "  ${DIM}打开 Codex 即可开始使用 InteNext.ai。${OFF}`n"
 }

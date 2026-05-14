@@ -407,16 +407,21 @@ if command -v pgrep >/dev/null 2>&1; then
 fi
 
 if [[ "$CODEX_RUNNING" == "1" ]]; then
+  echo
   case "$OSTYPE" in
     darwin*)
       # macOS:Codex 桌面应用关闭窗口后仍驻留 Dock,必须 ⌘+Q 彻底退出
-      printf '  %sCodex 正在运行 — 仅关闭窗口不够,应用还在后台。%s\n' "$C_DIM" "$C_OFF"
-      printf '  %s请按 %s⌘+Q%s%s 彻底退出 Codex,然后重新打开应用。%s\n\n' \
-             "$C_DIM" "$C_BLD" "$C_OFF$C_DIM" "" "$C_OFF"
+      printf '  %s⚠%s  %sCodex 正在运行 — 配置不会自动生效%s\n' \
+             "$C_YEL$C_BLD" "$C_OFF" "$C_YEL$C_BLD" "$C_OFF"
+      printf '     请按 %s⌘+Q%s 彻底退出 Codex,再重新打开应用\n' \
+             "$C_GLD$C_BLD" "$C_OFF"
+      printf '     %s(关闭窗口不够 — Codex 仍驻留在 Dock)%s\n\n' "$C_DIM" "$C_OFF"
       ;;
     *)
       # Linux 或其他
-      printf '  %sCodex 正在运行,请彻底退出 Codex 进程后重新打开。%s\n\n' "$C_DIM" "$C_OFF"
+      printf '  %s⚠%s  %sCodex 正在运行 — 配置不会自动生效%s\n' \
+             "$C_YEL$C_BLD" "$C_OFF" "$C_YEL$C_BLD" "$C_OFF"
+      printf '     请彻底退出 Codex 进程后重新打开\n\n'
       ;;
   esac
 else
