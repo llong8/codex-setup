@@ -407,8 +407,18 @@ if command -v pgrep >/dev/null 2>&1; then
 fi
 
 if [[ "$CODEX_RUNNING" == "1" ]]; then
-  printf '  %sCodex 正在运行,请%s关闭并重新打开 Codex%s 即可生效。%s\n\n' \
-         "$C_DIM" "$C_BLD$C_OFF$C_DIM" "$C_DIM" "$C_OFF"
+  case "$OSTYPE" in
+    darwin*)
+      # macOS:Codex 桌面应用关闭窗口后仍驻留 Dock,必须 ⌘+Q 彻底退出
+      printf '  %sCodex 正在运行 — 仅关闭窗口不够,应用还在后台。%s\n' "$C_DIM" "$C_OFF"
+      printf '  %s请按 %s⌘+Q%s%s 彻底退出 Codex,然后重新打开应用。%s\n\n' \
+             "$C_DIM" "$C_BLD" "$C_OFF$C_DIM" "" "$C_OFF"
+      ;;
+    *)
+      # Linux 或其他
+      printf '  %sCodex 正在运行,请彻底退出 Codex 进程后重新打开。%s\n\n' "$C_DIM" "$C_OFF"
+      ;;
+  esac
 else
-  printf '  %s打开 Codex 即可开始使用。%s\n\n' "$C_DIM" "$C_OFF"
+  printf '  %s打开 Codex 即可开始使用 InteNext.ai。%s\n\n' "$C_DIM" "$C_OFF"
 fi

@@ -302,7 +302,9 @@ foreach ($name in @('codex', 'Codex')) {
 }
 
 if ($codexRunning) {
-    Write-Host "  ${YEL}提示:${OFF} Codex 正在运行,请${BLD}关闭并重新打开 Codex${OFF} 即可生效。`n"
+    # Windows:Codex 桌面应用关窗口后驻留在系统托盘,必须从托盘退出
+    Write-Host "  ${DIM}Codex 正在运行 — 仅关闭窗口不够,应用驻留在系统托盘。${OFF}"
+    Write-Host "  ${DIM}请到屏幕${BLD}右下角任务栏${OFF}${DIM}(系统托盘)→ 右键 ${BLD}Codex${OFF}${DIM} 图标 → ${BLD}退出${OFF}${DIM},然后重新打开应用。${OFF}`n"
 } else {
-    Write-Host "  ${DIM}打开 Codex 即可开始使用。${OFF}`n"
+    Write-Host "  ${DIM}打开 Codex 即可开始使用 InteNext.ai。${OFF}`n"
 }
