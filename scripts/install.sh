@@ -329,8 +329,8 @@ if [[ -f "$CONFIG_FILE" ]]; then
       sub(/[ \t\n]+$/, "", top); sub(/[ \t\n]+$/, "", rest)
       if (length(top) > 0) printf "%s\n\n", top
       print "model_provider = \"OpenAI\""
-      print "model = \"gpt-5.4\""
-      print "review_model = \"gpt-5.4\""
+      print "model = \"gpt-5.6-sol\""
+      print "review_model = \"gpt-5.6-sol\""
       print "model_reasoning_effort = \"medium\""
       print "disable_response_storage = true"
       print "network_access = \"enabled\""
@@ -347,8 +347,8 @@ if [[ -f "$CONFIG_FILE" ]]; then
 else
   cat > "$TMPFILE" <<'EOF'
 model_provider = "OpenAI"
-model = "gpt-5.4"
-review_model = "gpt-5.4"
+model = "gpt-5.6-sol"
+review_model = "gpt-5.6-sol"
 model_reasoning_effort = "medium"
 disable_response_storage = true
 network_access = "enabled"

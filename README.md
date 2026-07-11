@@ -119,8 +119,8 @@ bun run dist:all    # mac dmg + windows zip 一起出
 
 ```toml
 model_provider = "OpenAI"
-model = "gpt-5.4"
-review_model = "gpt-5.4"
+model = "gpt-5.6-sol"
+review_model = "gpt-5.6-sol"
 model_reasoning_effort = "medium"
 disable_response_storage = true
 network_access = "enabled"
