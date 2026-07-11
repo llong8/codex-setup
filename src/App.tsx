@@ -16,7 +16,7 @@ declare global {
   }
 }
 
-const PLATFORM_URL = 'https://api.haivex.ai'
+const PLATFORM_URL = 'https://api.intenext.ai'
 
 export default function App() {
   const [apiKey, setApiKey] = useState('')

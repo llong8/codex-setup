@@ -1,5 +1,5 @@
 {
-  "appId": "ai.haivex.codex-setup",
+  "appId": "ai.intenext.codex-setup",
   "productName": "Codex Setup",
   "directories": {
     "output": "release/${version}",

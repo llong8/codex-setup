@@ -6,7 +6,7 @@
  *
  * 跳过 Wine —— 通过 signAndEditExecutable=false + dir target,
  * 不走 rcedit 给 .exe 嵌图标(Win 用户看 .exe 文件本身是默认 Electron 图标,
- * 但运行后窗口里的图标是 haivex logo,在 macOS 上 arm64 也能跑)。
+ * 但运行后窗口里的图标是 intenext logo,在 macOS 上 arm64 也能跑)。
  */
 
 import { spawnSync } from 'node:child_process'

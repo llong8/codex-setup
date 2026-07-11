@@ -339,7 +339,7 @@ if [[ -f "$CONFIG_FILE" ]]; then
       print ""
       print "[model_providers.OpenAI]"
       print "name = \"OpenAI\""
-      print "base_url = \"https://api.haivex.ai/v1\""
+      print "base_url = \"https://api.intenext.ai/v1\""
       print "wire_api = \"responses\""
       print "requires_openai_auth = true"
     }
@@ -356,7 +356,7 @@ windows_wsl_setup_acknowledged = true
 
 [model_providers.OpenAI]
 name = "OpenAI"
-base_url = "https://api.haivex.ai/v1"
+base_url = "https://api.intenext.ai/v1"
 wire_api = "responses"
 requires_openai_auth = true
 EOF

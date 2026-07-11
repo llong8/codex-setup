@@ -24,7 +24,7 @@ windows_wsl_setup_acknowledged = true`
 
 const MANAGED_SECTION_BLOCK = `[model_providers.OpenAI]
 name = "OpenAI"
-base_url = "https://api.haivex.ai/v1"
+base_url = "https://api.intenext.ai/v1"
 wire_api = "responses"
 requires_openai_auth = true`
 

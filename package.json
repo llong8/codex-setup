@@ -1,8 +1,8 @@
 {
-  "name": "haivex-codex-setup",
+  "name": "intenext-codex-setup",
   "version": "0.1.0",
   "private": true,
-  "description": "一键配置 Codex 使用 Haivex API 的 Electron 桌面工具",
+  "description": "一键配置 Codex 使用 InteNext API 的 Electron 桌面工具",
   "main": "dist-electron/main.js",
   "type": "module",
   "scripts": {
